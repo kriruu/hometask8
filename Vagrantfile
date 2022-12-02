@@ -18,18 +18,19 @@ Vagrant.configure("2") do |config|
         echo "Hello from the Centos VM"
         setenforce 0
         sed -ie 's/^SELINUX=.*$/SELINUX=disabled/' /etc/selinux/config
-        sudo mkdir -p /var/www/website.com/html/
+         mkdir -p /var/www/website.com/html/
         sudo mkdir -p /etc/httpd/conf.d/
         cp -rav /vagrant/www-content/* /var/www/website.com/html/
         cp -rav /vagrant/conf/* /etc/httpd/conf.d/
-        sudo mkdir /etc/ssl/privatekey
-        sudo chmod 700 /etc/ssl/privatekey
-        sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/apache-selfsigned.key -out /etc/pki/tls/certs/apache-selfsigned.crt -subj "/C=UA/ST=Lvivska/L=Lviv/O=ITStep/OU=University/CN=127.0.0.1"
-        sudo yum install -y epel-release
-        sudo yum install -y httpd
-        sudo yum install -y mod_ssl
-        sudo httpd -t
-        sudo systemctl start httpd
+        mkdir /etc/ssl/privatekey
+        chmod 700 /etc/ssl/privatekey
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/apache-selfsigned.key -out /etc/pki/tls/certs/apache-selfsigned.crt -subj "/C=UA/ST=Lvivska/L=Lviv/O=ITStep/OU=University/CN=127.0.0.1"
+        yum install -y epel-release
+        yum install -y httpd
+        yum install -y mod_ssl
+        httpd -t
+        systemctl start httpd
+        systemctl enable httpd
         
         
     SHELL
