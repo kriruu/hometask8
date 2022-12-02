@@ -1,13 +1,5 @@
-Hometask6
+Vagrant up
 
-Usage: 
+Goto https://localhost:8443
 
-vagrant up 
-
-vagrant ssh  
-
-sudo -i
- 
-df -h
-
-lsblk
+See content placed to ~/www-content
