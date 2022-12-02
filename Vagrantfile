@@ -18,8 +18,8 @@ Vagrant.configure("2") do |config|
         echo "Hello from the Centos VM"
         setenforce 0
         sed -ie 's/^SELINUX=.*$/SELINUX=disabled/' /etc/selinux/config
-         mkdir -p /var/www/website.com/html/
-        sudo mkdir -p /etc/httpd/conf.d/
+        mkdir -p /var/www/website.com/html/
+        mkdir -p /etc/httpd/conf.d/
         cp -rav /vagrant/www-content/* /var/www/website.com/html/
         cp -rav /vagrant/conf/* /etc/httpd/conf.d/
         mkdir /etc/ssl/privatekey
